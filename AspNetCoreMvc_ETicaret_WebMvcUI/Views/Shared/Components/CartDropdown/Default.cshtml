@@ -1,0 +1,41 @@
+﻿@model List<CartLineViewModel>
+
+
+<div class="dropdown-menu dropdown-menu-right" id="cartdropdown">
+    <div class="dropdown-cart-products">
+        @foreach (var item in Model)
+        {
+             <div class="product">
+            <div class="product-cart-details">
+                <h4 class="product-title">
+                    <a href="product.html">@item.Product.Name</a>
+                </h4>
+
+                <span class="cart-product-info">
+                    <span class="cart-product-qty">@item.Quantity</span>
+                    x @item.Product.Price.ToString("C")
+                </span>
+            </div><!-- End .product-cart-details -->
+
+            <figure class="product-image-container">
+                <a href="product.html" class="product-image">
+                    <img src="@item.Product.ThumbnailImage" alt="product">
+                </a>
+            </figure>
+            <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
+        </div><!-- End .product -->
+        }
+       
+    </div><!-- End .cart-product -->
+
+    <div class="dropdown-cart-total">
+        <span>Toplam</span>
+
+        <span class="cart-total-price">@ViewBag.total.ToString("C")</span>
+    </div><!-- End .dropdown-cart-total -->
+
+    <div class="dropdown-cart-action">
+        <a asp-action="Index" asp-controller="Cart" class="btn btn-primary">Sepeti Gör</a>
+        <a href="checkout.html" class="btn btn-outline-primary-2"><span>Ödeme</span><i class="icon-long-arrow-right"></i></a>
+    </div><!-- End .dropdown-cart-total -->
+</div><!-- End .dropdown-menu -->

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ProductViewModel>
+
+@foreach (var item in Model)
+{
+    <div class="product product-7 text-center">
+        <figure class="product-media">
+            <span class="product-label label-new">New</span>
+            <a href="product.html">
+                <img src="@item.ThumbnailImage" alt="Product image" class="product-image">
+            </a>
+            <div class="product-action">
+                <a href="#" class="btn-product btn-cart"><span>Sepete Ekle</span></a>
+            </div><!-- End .product-action -->
+        </figure><!-- End .product-media -->
+
+        <div class="product-body">
+            <div class="product-cat">
+                <a href="#">Women</a>
+            </div><!-- End .product-cat -->
+            <h3 class="product-title">
+                <a asp-action="Details" asp-controller="Urunler" asp-route-id="@item.Id">
+                    @if (item.Name.Count() > 50)
+                    {
+                        @item.Name.Substring(0,item.Name.Substring(0,50).LastIndexOf(" ")).ToString()
+
+                        <span>...</span>
+                    }
+                    else
+                    {
+                        @item.Name
+                    }
+                </a>
+            </h3><!-- End .product-title -->
+            <div class="product-price">
+                @item.Price.ToString("C")
+            </div><!-- End .product-price -->
+            <div class="ratings-container">
+                <div class="ratings">
+                    <div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
+                </div><!-- End .ratings -->
+                <span class="ratings-text">( 2 Yorum )</span>
+            </div><!-- End .rating-container -->
+        </div><!-- End .product-body -->
+    </div>
+
+    <!-- End .product -->
+}

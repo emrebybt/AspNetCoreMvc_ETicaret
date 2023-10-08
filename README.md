@@ -1,0 +1,2 @@
+# AspNetCoreMvc_ETicaret
+ 

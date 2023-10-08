@@ -1,0 +1,46 @@
+﻿@model List<ProductSpecsViewModel>
+
+@{
+    ViewData["Title"] = "CreateProductSpecs";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-12 grid-margin">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Ürünün Özellikleri</h4>
+                        <form class="form-sample" asp-action="CreateProductSpecs" asp-controller="Admin" method="post">
+                            <div class="row">
+                                <input type="hidden" name="productId" value="@ViewBag.productId" />
+                                @foreach (var item in Model)
+                                {
+                                    <div class="col-md-6">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">@item.Key</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" name="formData[@item.Key]"  />
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            <button type="submit" class="btn btn-primary">Gönder</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- content-wrapper ends -->
+    <!-- partial:../../partials/_footer.html -->
+    <footer class="footer">
+        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates</a> from Bootstrapdash.com</span>
+        </div>
+    </footer>
+    <!-- partial -->
+</div>

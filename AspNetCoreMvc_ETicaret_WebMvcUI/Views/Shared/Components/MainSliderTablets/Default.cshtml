@@ -1,0 +1,83 @@
+﻿@model List<ProductViewModel>
+
+<div class="tab-pane p-0 fade" id="new-watches-tab" role="tabpanel" aria-labelledby="new-watches-link">
+    <div class="owl-carousel owl-full carousel-equal-height carousel-with-shadow" data-toggle="owl"
+         data-owl-options='{
+                                "nav": true,
+                                "dots": true,
+                                "margin": 20,
+                                "loop": false,
+                                "responsive": {
+                                    "0": {
+                                        "items":2
+                                    },
+                                    "480": {
+                                        "items":2
+                                    },
+                                    "768": {
+                                        "items":3
+                                    },
+                                    "992": {
+                                        "items":4
+                                    },
+                                    "1200": {
+                                        "items":5
+                                    }
+                                }
+                            }'>
+
+        @foreach (var item in Model)
+        {
+            <div class="product product-2">
+                <figure class="product-media">
+                    <a asp-action="Details" asp-controller="Urunler" asp-route-id="@item.Id">
+                        <img src="@item.ThumbnailImage" alt="Product image" class="product-image">
+                    </a>
+
+                    <div class="product-action-vertical">
+                        <a href="#" class="btn-product-icon btn-wishlist" title="Favorilere Ekle"></a>
+                    </div><!-- End .product-action -->
+
+                    <div class="product-action">
+                        <a href="javascript:void(0);" onclick="AddToCart(@item.Id)" class="btn-product btn-cart" title="Sepete Ekle"><span>Sepete Ekle</span></a>
+                    </div><!-- End .product-action -->
+                </figure><!-- End .product-media -->
+
+                <div class="product-body">
+                    <div class="product-cat">
+                        <a asp-action="Index" asp-controller="Urunler" asp-route-id="@item.CategoryId">@item.Category.CategoryName</a>
+                    </div><!-- End .product-cat -->
+                    <h3 class="product-title">
+                        <a asp-action="Details" asp-controller="Urunler" asp-route-id="@item.Id">
+                            @if (item.Name.Count() > 50)
+                            {
+                                @item.Name.Substring(0,item.Name.Substring(0,50).LastIndexOf(" ")).ToString()
+
+                                <span>...</span>
+                            }
+                            else
+                            {
+                                @item.Name
+                            }
+                        </a>
+                    </h3><!-- End .product-title -->
+                    <div class="product-price">
+                        <span class="new-price">@item.Price.ToString("C")</span>
+                        <span class="old-price">Was $41.67</span>
+                    </div><!-- End .product-price -->
+                    <div class="ratings-container">
+                        <div class="ratings">
+                            <div class="ratings-val" style="width: 100%;"></div><!-- End .ratings-val -->
+                        </div><!-- End .ratings -->
+                        <span class="ratings-text">( 10 Reviews )</span>
+                    </div><!-- End .rating-container -->
+
+                </div><!-- End .product-body -->
+            </div>
+
+            <!-- End .product -->
+        }
+
+
+    </div><!-- End .owl-carousel -->
+</div><!-- .End .tab-pane -->

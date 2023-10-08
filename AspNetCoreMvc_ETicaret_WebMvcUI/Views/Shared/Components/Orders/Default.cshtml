@@ -1,0 +1,35 @@
+﻿@model List<SaleViewModel>
+
+
+<div class="tab-pane fade show active" id="tab-orders" role="tabpanel" aria-labelledby="tab-orders-link">
+    <div class="products mb-3">
+        @foreach (var item in Model)
+        {
+            <div class="products mb-3">
+                <div class="product product-list">
+                    <div class="row">
+                        <div class="col-6 col-lg-3" style=" display: flex; justify-content: center;  margin-top:30px;">
+                            <img src="~/images/cart.png" alt="Product image" style="height:60px;">
+                        </div><!-- End .col-sm-6 col-lg-3 -->
+
+                        <div class="col-lg-6">
+                            <div class="product-body product-action-inner">
+                                <div class="product-cat">
+                                    <h5 class="product-title mt-2">Sipariş Tarihi: @item.CreatedDate</h5>
+                                </div><!-- End .product-cat -->
+                                <h3 class="product-title"><a href="product.html"></a></h3><!-- End .product-title -->
+                                <div class="product-price d-inline">
+                                    Toplam Tutar: @item.TotalPrice.ToString("C")
+                                </div><!-- End .product-price -->
+                            </div><!-- End .product-body -->
+                            <a class="btn btn-primary btn-round float-right" href="#">Sipariş Detayı</a>
+                        </div><!-- End .col-lg-6 -->
+                    </div><!-- End .row -->
+                </div><!-- End .product -->
+            </div>
+            <!-- End .products -->
+        }
+    </div>
+    @*<p>No order has been made yet.</p>
+    <a href="category.html" class="btn btn-outline-primary-2"><span>GO SHOP</span><i class="icon-long-arrow-right"></i></a>*@
+</div><!-- .End .tab-pane -->

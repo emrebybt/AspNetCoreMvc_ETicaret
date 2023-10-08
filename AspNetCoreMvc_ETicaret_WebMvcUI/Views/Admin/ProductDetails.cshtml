@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewData["Title"] = "ProductDetails";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model ProductViewModel
+@{
+    ViewData["Title"] = "CreateProduct";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Basic form elements</h4>
+                        <p class="card-description"> Basic form elements </p>
+                        <form class="forms-sample" asp-action="CreateProduct" asp-controller="Admin" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label asp-for="Name">Ürün Adı</label>
+                                <input type="text" asp-for=Name class="form-control" placeholder="Name">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Description">Açıklama</label>
+                                <textarea type="email" class="form-control" asp-for="Description" placeholder="Açıklama"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Brand">Marka</label>
+                                <input type="text" class="form-control" asp-for=Brand placeholder="Marka">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Price">Fiyat</label>
+                                <input type="text" class="form-control" asp-for=Price placeholder="Fiyat">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="CategoryId">Kategori</label>
+                                <select class="form-control" asp-for="CategoryId" asp-items="@ViewBag.categories">
+                                    <option selected disabled>Kategori Seçiniz</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Kapak Resmi</label>
+                                <input asp-for="ThumbnailImage" class="form-control" type="file" name="formFile" />
+                                <div class="input-group col-xs-12">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>İçerik Resmi 1</label>
+                                <input asp-for="ThumbnailImage" class="form-control" type="file" name="formFile2" />
+                                <div class="input-group col-xs-12">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>İçerik Resmi 2</label>
+                                <input asp-for="ThumbnailImage" class="form-control" type="file" name="formFile3" />
+                                <div class="input-group col-xs-12">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>İçerik Resmi 3</label>
+                                <input asp-for="ThumbnailImage" class="form-control" type="file" name="formFile4" />
+                                <div class="input-group col-xs-12">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>İçerik Resmi 4</label>
+                                <input asp-for="ThumbnailImage" class="form-control" type="file" name="formFile5" />
+                                <div class="input-group col-xs-12">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary mr-2">Devam</button>
+                            <button class="btn btn-dark">İptal</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

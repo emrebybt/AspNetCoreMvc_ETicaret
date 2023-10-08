@@ -1,0 +1,146 @@
+﻿@model List<CartLineViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<main class="main">
+    <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+        <div class="container">
+            <h1 class="page-title">Ödeme<span>Shop</span></h1>
+        </div><!-- End .container -->
+    </div><!-- End .page-header -->
+    <br />
+    <hr />
+    <div class="page-content">
+        <div class="checkout">
+            <div class="container">
+
+                <form action="#">
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <h2 class="checkout-title">Billing Details</h2><!-- End .checkout-title -->
+                            <div class="row d-inline">
+                                <div class="col-md-6 d-inline-block">
+                                    <label>Kart Numarası</label>
+                                    <input inputmode="numeric" type="text" class="form-control" placeholder="1234 5678 9123 4567" required>
+                                </div>
+                                <div class="col-md-6 float-right">
+                                    <img src="~/images/creditcard.png" alt="Kart Resmi">
+                                </div>
+                            </div>
+                            <div class="row d-inline">
+                                <div class="col-md-6 d-inline-block">
+                                    <label>Kart Üzerindeki İsim</label>
+                                    <input type="text" class="form-control" placeholder="Kart Sahibinin Adı Ve Soyadı" required>
+                                </div>
+                            </div>
+                            <div class="row row d-inline">
+                                <div class="col-md-3 d-inline-block">
+                                    <label>Son Kullanma Tarihi</label>
+                                    <input type="text" class="form-control" placeholder="Ay / Yıl" required>
+                                </div>
+                                <div class="col-md-3 d-inline-block">
+                                    <label>Güvenlik Kodu</label>
+                                    <input type="text" class="form-control" placeholder="CVC/CVV" required>
+                                </div>
+                            </div>
+                            <br />
+                            <br />
+                            <br />
+                            <hr />
+                            <div class="text-center">
+                                <h5>Kayıtlı Adresler</h5>
+                            </div>
+
+                            <form>
+
+                                <div class="d-flex justify-content-center">
+                                    @if (ViewBag.user.Adress != null)
+                                    {
+                                        <div class="m-3" style="width: 25rem; border-style:solid; border-width:1px; border-radius:5px; padding:10px; display:inline-block;">
+                                            <input type="radio" name="adres" />
+                                            <h5 class="card-title d-inline">@ViewBag.user.AdressName</h5>
+                                            <p class="card-text">@ViewBag.user.Adress</p>
+                                            <a href="#" class="btn btn-primary m-2">Adresi Düzenle</a>
+                                        </div>
+                                    }
+                                    @if (ViewBag.user.Adress2 != null)
+                                    {
+                                        <div class="m-3" style="width: 25rem; border-style:solid; border-width:1px; border-radius:5px; padding:10px; display:inline-block;">
+                                            <input type="radio" name="adres" />
+                                            <h5 class="card-title d-inline">@ViewBag.user.AdressName</h5>
+                                            <p class="card-text">@ViewBag.user.Adress2</p>
+                                            <a href="#" class="btn btn-primary m-2">Adresi Düzenle</a>
+                                        </div>
+                                    }
+                                    @if (ViewBag.user.Adress3 != null)
+                                    {
+                                        <div class="m-3" style="width: 25rem; border-style:solid; border-width:1px; border-radius:5px; padding:10px; display:inline-block;">
+                                            <input type="radio" name="adres" />
+                                            <h5 class="card-title d-inline">@ViewBag.user.AdressName</h5>
+                                            <p class="card-text">@ViewBag.user.Adress3</p>
+                                            <a href="#" class="btn btn-primary m-2">Adresi Düzenle</a>
+                                        </div>
+                                    }
+                                    @if (ViewBag.user.Adress == null && ViewBag.user.Adress2 == null && ViewBag.user.Adress3 == null)
+                                    {
+
+                                        <div class="alert alert-danger container text-center mt-2" role="alert" style="height:70px; display: flex; align-items: center; justify-content: center; ">
+                                            Kayıtlı Adresiniz Bulunmamaktadır &nbsp; <b><a href="#" class="text-white">Eklemek İçin Tıklayın</a></b>
+                                        </div>
+                                    }
+                                </div>
+                            </form>
+                            <hr />
+                        </div>
+
+                        <aside class="col-lg-3">
+                            <div class="summary">
+                                <h3 class="summary-title">Siparişiniz</h3><!-- End .summary-title -->
+
+                                <table class="table table-summary">
+                                    <thead>
+                                        <tr>
+                                            <th>Ürünler</th>
+                                            <th>Toplam</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td><a href="#">@item.Product.Name</a></td>
+                                                <td>@item.Product.Price.ToString("C")</td>
+                                            </tr>
+                                        }
+                                        <tr class="summary-subtotal">
+                                            <td>Ara Toplam:</td>
+                                            <td>@ViewBag.cart.TotalPrice.ToString("C")</td>
+                                        </tr><!-- End .summary-subtotal -->
+                                        <tr>
+                                            <td>Kargo:</td>
+                                            <td>Free shipping</td>
+                                        </tr>
+                                        <tr class="summary-total">
+                                            <td>Toplam:</td>
+                                            <td>@ViewBag.cart.TotalPrice.ToString("C")</td>
+                                        </tr><!-- End .summary-total -->
+                                    </tbody>
+                                </table><!-- End .table table-summary -->
+                                
+
+                                <a asp-action="Payment" asp-controller="Payment" class="btn btn-outline-primary-2 btn-order btn-block">
+                                    <span class="btn-text">Sipariş Ver</span>
+                                    <span class="btn-hover-text">Sipariş Ver</span>
+                                </a>
+                            </div><!-- End .summary -->
+                        </aside><!-- End .col-lg-3 -->
+                    </div><!-- End .row -->
+
+                </form>
+            </div><!-- End .container -->
+        </div><!-- End .checkout -->
+    </div><!-- End .page-content -->
+</main><!-- End .main -->

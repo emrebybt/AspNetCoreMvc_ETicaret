@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domains", "Domains", "{70B4BAFA-8CC4-4F08-8764-987515FBF9D7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructures", "Infrastructures", "{07079978-E79D-4B1F-A2AD-EEAA78FC4121}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{D611BDDD-CC77-4837-A7A6-173D57F2FD28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreMvc_ETicaret_Entity", "AspNetCoreMvc_ETicaret_Entity\AspNetCoreMvc_ETicaret_Entity.csproj", "{761FD66F-FBA2-495D-AFA7-3F8782C4E2B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreMvc_ETicaret_DataAccess", "AspNetCoreMvc_ETicaret_DataAccess\AspNetCoreMvc_ETicaret_DataAccess.csproj", "{B6FF7159-355C-49E7-AAAB-2642989D4143}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreMvc_ETicaret_Service", "AspNetCoreMvc_ETicaret_Service\AspNetCoreMvc_ETicaret_Service.csproj", "{145B708E-849E-48B5-AB54-510E91988FAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreMvc_ETicaret_WebMvcUI", "AspNetCoreMvc_ETicaret_WebMvcUI\AspNetCoreMvc_ETicaret_WebMvcUI.csproj", "{E233B60A-480B-4C02-8A45-354115297D03}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{761FD66F-FBA2-495D-AFA7-3F8782C4E2B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{761FD66F-FBA2-495D-AFA7-3F8782C4E2B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{761FD66F-FBA2-495D-AFA7-3F8782C4E2B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{761FD66F-FBA2-495D-AFA7-3F8782C4E2B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6FF7159-355C-49E7-AAAB-2642989D4143}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6FF7159-355C-49E7-AAAB-2642989D4143}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6FF7159-355C-49E7-AAAB-2642989D4143}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6FF7159-355C-49E7-AAAB-2642989D4143}.Release|Any CPU.Build.0 = Release|Any CPU
+		{145B708E-849E-48B5-AB54-510E91988FAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{145B708E-849E-48B5-AB54-510E91988FAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{145B708E-849E-48B5-AB54-510E91988FAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{145B708E-849E-48B5-AB54-510E91988FAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E233B60A-480B-4C02-8A45-354115297D03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E233B60A-480B-4C02-8A45-354115297D03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E233B60A-480B-4C02-8A45-354115297D03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E233B60A-480B-4C02-8A45-354115297D03}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{761FD66F-FBA2-495D-AFA7-3F8782C4E2B9} = {70B4BAFA-8CC4-4F08-8764-987515FBF9D7}
+		{B6FF7159-355C-49E7-AAAB-2642989D4143} = {07079978-E79D-4B1F-A2AD-EEAA78FC4121}
+		{145B708E-849E-48B5-AB54-510E91988FAC} = {07079978-E79D-4B1F-A2AD-EEAA78FC4121}
+		{E233B60A-480B-4C02-8A45-354115297D03} = {D611BDDD-CC77-4837-A7A6-173D57F2FD28}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D9C24EA9-6B53-4392-8A19-33B1988DF0A9}
+	EndGlobalSection
+EndGlobal

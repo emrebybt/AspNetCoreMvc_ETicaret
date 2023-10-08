@@ -1,0 +1,44 @@
+﻿@model List<ProductViewModel>
+
+<div class="products">
+    <div class="row justify-content-center">
+        @foreach (var item in Model)
+        {
+            <div class="col-6 col-md-4 col-lg-3">
+            <div class="product product-2">
+                <figure class="product-media">
+                        <a asp-action="Details" asp-controller="Urunler" asp-route-id="@item.Id">
+                        <img src="@item.ThumbnailImage" alt="Product image" class="product-image">
+                    </a>
+
+                    <div class="product-action-vertical">
+                        <a href="#" class="btn-product-icon btn-wishlist" title="Add to wishlist"></a>
+                    </div><!-- End .product-action -->
+
+                    <div class="product-action">
+                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>Sepete Ekle</span></a>
+                    </div><!-- End .product-action -->
+                </figure><!-- End .product-media -->
+
+                <div class="product-body">
+                    <div class="product-cat">
+                            <a asp-action="Index" asp-controller="Urunler" asp-route-id="@item.CategoryId">@item.Category.CategoryName</a>
+                    </div><!-- End .product-cat -->
+                        <h3 class="product-title"><a asp-action="Details" asp-controller="Urunler" asp-route-id="@item.Id">@item.Name</a></h3><!-- End .product-title -->
+                    <div class="product-price">
+                        <span class="new-price">@item.Price.ToString("C")</span>
+                    </div><!-- End .product-price -->
+                    <div class="ratings-container">
+                        <div class="ratings">
+                            <div class="ratings-val" style="width: 40%;"></div><!-- End .ratings-val -->
+                        </div><!-- End .ratings -->
+                        <span class="ratings-text">( 4 Yorum )</span>
+                    </div><!-- End .rating-container -->
+                </div><!-- End .product-body -->
+            </div><!-- End .product -->
+        </div><!-- End .col-sm-6 col-md-4 col-lg-3 -->
+        }
+        
+
+    </div><!-- End .row -->
+</div><!-- End .products -->

@@ -1,0 +1,145 @@
+﻿<header class="header header-intro-clearance header-4">
+
+
+    <div class="header-middle">
+        <div class="container">
+            <div class="header-left">
+                <button class="mobile-menu-toggler">
+                    <span class="sr-only">Toggle mobile menu</span>
+                    <i class="icon-bars"></i>
+                </button>
+
+                <a asp-action="Index" asp-controller="AnaSayfa" class="logo">
+                    <img src="~/proje/assets/images/demos/demo-4/logo.png" alt="Molla Logo" width="105" height="25">
+                </a>
+            </div><!-- End .header-left -->
+
+            <div class="header-center">
+                <div class="header-search header-search-extended header-search-visible d-none d-lg-block">
+                    <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
+                    <form action="#" method="get">
+                        <div class="header-search-wrapper search-wrapper-wide">
+                            <label for="q" class="sr-only">Search</label>
+                            <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
+                            <input type="search" class="form-control" name="q" id="q" placeholder="Ürün Ara..." required>
+                        </div><!-- End .header-search-wrapper -->
+                    </form>
+                </div><!-- End .header-search -->
+            </div>
+
+            <div class="header-right">
+
+                <div class="wishlist">
+                    <a href="wishlist.html" title="Wishlist">
+                        <div class="icon">
+                            <i class="icon-heart-o"></i>
+                            <span class="wishlist-count badge">3</span>
+                        </div>
+                        <p>Favoriler</p>
+                    </a>
+                </div><!-- End .compare-dropdown -->
+
+                <div class="dropdown cart-dropdown">
+                    <a asp-action="Index" asp-controller="Cart" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
+                        <div class="icon">
+                            <i class="icon-shopping-cart"></i>
+                            <span class="cart-count"><vc:cart-count></vc:cart-count></span>
+                        </div>
+                        <p>Sepet</p>
+                    </a>
+                    <vc:cart-dropdown></vc:cart-dropdown>
+                </div><!-- End .cart-dropdown -->
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="wishlist">
+                        <a asp-action="UserDashboard" asp-controller="Account">
+                            <div class="icon">
+                                <i class="icon-user"></i>
+                            </div>
+                            <p>Hesabım</p>
+                        </a>
+                    </div>
+                    <div class="wishlist">
+                        <a asp-action="Logout" asp-controller="Account">
+                            <div class="icon">
+                                <i class="fa-solid fa-right-from-bracket fa-2xs"></i>
+                            </div>
+                            <p>Çıkış</p>
+                        </a>
+                    </div>
+
+                }
+                else
+                {
+                    <div class="wishlist">
+                        <a asp-action="Login" asp-controller="Account">
+                            <div class="icon">
+                                <i class="icon-user"></i>
+                            </div>
+                            <p>Giriş Yap</p>
+                        </a>
+                    </div>
+                }
+
+            </div><!-- End .header-right -->
+        </div><!-- End .container -->
+    </div><!-- End .header-middle -->
+
+    <div class="header-bottom sticky-header">
+        <div class="container">
+            <div class="header-left">
+                <div class="dropdown category-dropdown">
+                    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Browse Categories">
+                        Tüm Kategoriler <i class="icon-angle-down"></i>
+                    </a>
+
+                    <div class="dropdown-menu">
+                        <nav class="side-nav">
+                            <ul class="menu-vertical sf-arrows">
+                                <li class="item-lead"><a asp-action="Index" asp-controller="Urunler" asp-route-id="7">Masaüstü Bilgisayar</a></li>
+                                <li class="item-lead"><a asp-action="Index" asp-controller="Urunler" asp-route-id="6">Laptop</a></li>
+                                <li class="item-lead"><a asp-action="Index" asp-controller="Urunler" asp-route-id="1">Telefon</a></li>
+                                <li class="item-lead"><a asp-action="Index" asp-controller="Urunler" asp-route-id="2">Tablet</a></li>
+                                <li class="item-lead"><a asp-action="Index" asp-controller="Urunler" asp-route-id="3">Televizyon</a></li>
+                                <li class="item-lead"><a asp-action="Index" asp-controller="Urunler" asp-route-id="4">Oyun Konsolu</a></li>
+                                <li class="item-lead"><a asp-action="Index" asp-controller="Urunler" asp-route-id="10">Yazıcı</a></li>
+                                <li class="item-lead"><a asp-action="Index" asp-controller="Urunler" asp-route-id="5">Kamera</a></li>
+                                <li class="item-lead"><a asp-action="Index" asp-controller="Urunler" asp-route-id="8">Isıtıcı</a></li>
+                                <li class="item-lead"><a asp-action="Index" asp-controller="Urunler" asp-route-id="9">Klima</a></li>
+                            </ul><!-- End .menu-vertical -->
+                        </nav><!-- End .side-nav -->
+                    </div><!-- End .dropdown-menu -->
+                </div><!-- End .category-dropdown -->
+            </div><!-- End .header-left -->
+
+            <div class="header-center">
+                <nav class="main-nav">
+                    <ul class="menu sf-arrows">
+                        <li class="megamenu-container mx-3">
+                            <a href="index.html">Ana Sayfa</a>
+                        </li>
+                        <li class="mx-3">
+                            <a href="category.html">Shop</a>
+                        </li>
+                        <li class="mx-3">
+                            <a href="product.html">Product</a>
+                        </li>
+                        <li class="mx-3">
+                            <a href="#">Pages</a>
+                        </li>
+                        <li>
+                            <a href="blog.html">Hakkımızda</a>
+                        </li>
+                        <li class="mx-3">
+                            <a href="elements-list.html">İletişim</a>
+                        </li>
+                    </ul><!-- End .menu -->
+                </nav><!-- End .main-nav -->
+            </div><!-- End .header-center -->
+
+            <div class="header-right">
+                <i class="la la-lightbulb-o"></i><p><span class="highlight">İlk Siparişinizde&nbsp30% İndirim</span></p>
+            </div>
+        </div><!-- End .container -->
+    </div><!-- End .header-bottom -->
+</header>

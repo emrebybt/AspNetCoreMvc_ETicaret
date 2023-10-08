@@ -1,0 +1,10 @@
+.card-image {
+    max-width: 100%;
+    height: auto;
+    margin-left: 10px; /* Ýstenilen bir kenar boþluðu ekleyebilirsiniz */
+}
+
+.input-with-image {
+    display: flex;
+    align-items: center;
+}
