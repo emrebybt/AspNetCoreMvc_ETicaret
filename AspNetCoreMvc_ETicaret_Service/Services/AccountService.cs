@@ -37,6 +37,29 @@ namespace AspNetCoreMvc_ETicaret_Service.Services
             _uow = uow;
         }
 
+        public async Task<string> CreateRoleAsync(RoleViewModel role)
+        {
+            string message = string.Empty;
+            var rol = new AppRole()
+            {
+                Name = role.Name,
+                Description = role.Description
+            };
+            var result = await _roleManager.CreateAsync(rol);
+            if (result.Succeeded)
+            {
+                message = "OK";
+            }
+            else
+            {
+                foreach (var error in result.Errors)
+                {
+                    message = error.Description;
+                }
+            }
+            return message;
+        }
+
         public async Task<string> CreateUserAsync(RegisterViewModel model)
         {
             string message = string.Empty;
@@ -61,6 +84,38 @@ namespace AspNetCoreMvc_ETicaret_Service.Services
                 message = error.Description;
             }
             return message;
+        }
+
+        public async Task<string> EditRoleListAsync(EditRoleViewModel model)
+        {
+            string msg = "OK";
+            foreach (var userId in model.UserIdsToAdd ?? new string[] { })
+            {
+                var user = await _userManager.FindByIdAsync(userId);
+                if (user != null)
+                {
+                    var result = await _userManager.AddToRoleAsync(user, model.RoleName);
+                    if (!result.Succeeded)
+                    {
+                        msg = $"{user.UserName} role eklenemedi";
+
+                    }
+                }
+            }
+            foreach (var userId in model.UserIdsToDelete ?? new string[] { })
+            {
+                var user = await _userManager.FindByIdAsync(userId);
+                if (user != null)
+                {
+                    var result = await _userManager.RemoveFromRoleAsync(user, model.RoleName);
+                    if (!result.Succeeded)
+                    {
+                        msg = $"{user.UserName} rolden çıkarılamadı";
+                    }
+                }
+
+            }
+            return msg;
         }
 
         public async Task<string> FinByNameAsync(LoginViewModel model, List<CartLineViewModel> cartline)
@@ -109,10 +164,51 @@ namespace AspNetCoreMvc_ETicaret_Service.Services
             return _mapper.Map<UserViewModel>(user);
         }
 
+        public async Task<RoleViewModel> FindRoleByIdAsync(string id)
+        {
+            var role = await _roleManager.FindByIdAsync(id);
+            return _mapper.Map<RoleViewModel>(role);
+        }
+
         public async Task<List<UserViewModel>> GetAll()
         {
             var list = await _userManager.Users.ToListAsync();
             return _mapper.Map<List<UserViewModel>>(list);
+        }
+
+        public async Task<List<RoleViewModel>> GetAllRoles()
+        {
+            var roles = await _roleManager.Roles.ToListAsync();
+            return _mapper.Map<List<RoleViewModel>>(roles);
+        }
+
+        public async Task<UsersInOrOutViewModel> GetAllUsersWithRole(string id)
+        {
+            var role = await this.FindRoleByIdAsync(id);
+
+            var usersInRole = new List<AppUser>();
+            var usersOutRole = new List<AppUser>();
+
+            var users = await _userManager.Users.ToListAsync();
+
+            foreach (var user in users)
+            {
+                if (await _userManager.IsInRoleAsync(user, role.Name))
+                {
+                    usersInRole.Add(user);  //Bu rolde bulunan kullanıcıların listesi
+                }
+                else
+                {
+                    usersOutRole.Add(user); //Bu rolde olmayan kullanıcıların listesi
+                }
+            }
+            UsersInOrOutViewModel model = new UsersInOrOutViewModel()
+            {
+                Role = _mapper.Map<RoleViewModel>(role),
+                UsersInRole = _mapper.Map<List<UserViewModel>>(usersInRole),
+                UsersOutRole = _mapper.Map<List<UserViewModel>>(usersOutRole)
+            };
+            return model;
         }
 
         public async Task LogoutAsync()

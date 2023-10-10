@@ -70,7 +70,7 @@ namespace AspNetCoreMvc_ETicaret_WebMvcUI.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                
+
                 _cartLineService.DeleteCartLine(id);
                 Cart = GetCart();
             }
@@ -138,7 +138,7 @@ namespace AspNetCoreMvc_ETicaret_WebMvcUI.Controllers
                 Cart = GetCart();
                 foreach (var item in Cart)
                 {
-                    if (item.Quantity > 0)
+                    if (item.Quantity > 1)
                     {
                         _cartLineService.DecreaseCartLine(Cart, id);
                         SaveCart(Cart, 0, 0);

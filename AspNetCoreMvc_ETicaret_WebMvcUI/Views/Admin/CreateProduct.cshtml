@@ -9,16 +9,16 @@
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Basic form elements</h4>
-                        <p class="card-description"> Basic form elements </p>
+                        <h4 class="card-title">Yeni Ürün Oluştur</h4>
                         <form class="forms-sample" asp-action="CreateProduct" asp-controller="Admin" method="post" enctype="multipart/form-data">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <div class="form-group">
                                 <label asp-for="Name">Ürün Adı</label>
-                                <input type="text" asp-for=Name class="form-control" placeholder="Name">
+                                <input type="text" asp-for=Name class="form-control" placeholder="Ürün Adı">
                             </div>
                             <div class="form-group">
                                 <label asp-for="Description">Açıklama</label>
-                                <textarea type="email" class="form-control" asp-for="Description" placeholder="Açıklama"></textarea>
+                                <textarea type="text" class="form-control" asp-for="Description" rows="15" placeholder="Açıklama"></textarea>
                             </div>
                             <div class="form-group">
                                 <label asp-for="Brand">Marka</label>
@@ -27,6 +27,10 @@
                             <div class="form-group">
                                 <label asp-for="Price">Fiyat</label>
                                 <input type="text" class="form-control" asp-for=Price placeholder="Fiyat">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Stock">Stok Adeti</label>
+                                <input type="text" class="form-control" asp-for=Stock placeholder="Stok Adeti">
                             </div>
                             <div class="form-group">
                                 <label asp-for="CategoryId">Kategori</label>
@@ -74,3 +78,8 @@
     </div>
 </div>
 
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

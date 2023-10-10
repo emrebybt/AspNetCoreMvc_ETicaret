@@ -19,14 +19,16 @@ namespace AspNetCoreMvc_ETicaret_Service.Services
         private readonly ICartService _cartService;
         private readonly ICartLineService _lineService;
         private readonly IProductService _productService;
+        private readonly IAccountService _accountService;
 
-        public SaleService(IUnitOfWorks uow, IMapper mapper, ICartService cartService, ICartLineService lineService, IProductService productService)
+        public SaleService(IUnitOfWorks uow, IMapper mapper, ICartService cartService, ICartLineService lineService, IProductService productService, IAccountService accountService)
         {
             _uow = uow;
             _mapper = mapper;
             _cartService = cartService;
             _lineService = lineService;
             _productService = productService;
+            _accountService = accountService;
         }
 
         public void CreateSale(List<CartLineViewModel> cartline, CartViewModel cart)
@@ -57,15 +59,40 @@ namespace AspNetCoreMvc_ETicaret_Service.Services
                 {
                     _productService.Delete(product);
                 }
-                
+
                 _uow.Commit();
             }
 
         }
 
-        public async Task<List<SaleViewModel>> GetAllSale(Expression<Func<Sale, bool>> filter, Func<IQueryable<Sale>, IOrderedQueryable<Sale>> orderby = null, params Expression<Func<Sale, object>>[] includes)
+        public async Task<List<SaleViewModel>> GetAll()
         {
-            var list = await _uow.GetRepository<Sale>().GetAll(filter,orderby,includes);
+            var list = await _uow.GetRepository<Sale>().GetAllAsync();
+            var mappedlist = _mapper.Map<List<SaleViewModel>>(list);
+            foreach (var item in mappedlist)
+            {
+                var user = await _accountService.FindByIdAsync(item.UserId);
+                item.FullName = user.FirstName + " " + user.LastName;
+            }
+
+            return mappedlist;
+        }
+
+        public async Task<List<SaleViewModel>> GetAllLastFive()
+        {
+            var list = await this.GetAll();
+            list.TakeLast(5);
+            foreach (var item in list)
+            {
+                var user = await _accountService.FindByIdAsync(item.UserId);
+                item.FullName = user.FirstName + " " + user.LastName;
+            }
+            return list;
+        }
+
+        public async Task<List<SaleViewModel>> GetAllSale(Expression<Func<Sale, bool>> filter = null, Func<IQueryable<Sale>, IOrderedQueryable<Sale>> orderby = null, params Expression<Func<Sale, object>>[] includes)
+        {
+            var list = await _uow.GetRepository<Sale>().GetAll(filter, orderby, includes);
             return _mapper.Map<List<SaleViewModel>>(list);
         }
     }

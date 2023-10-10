@@ -24,10 +24,12 @@ namespace AspNetCoreMvc_ETicaret_Service.Services
             _mapper = mapper;
             _productSpecsService = productSpecsService;
         }
-        public async Task Add(ProductViewModel model)
+        public async Task<int> Add(ProductViewModel model)
         {
-            await _uow.GetRepository<Products>().Add(_mapper.Map<Products>(model));
-            await _uow.CommitAsync();
+            var product = _mapper.Map<Products>(model);
+            await _uow.GetRepository<Products>().Add(product);
+            _uow.Commit();
+            return product.Id;
         }
 
         public void Delete(ProductViewModel model)

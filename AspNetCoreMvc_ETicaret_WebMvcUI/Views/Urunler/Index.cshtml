@@ -37,25 +37,20 @@
                                 <div class="product product-7 text-center">
                                     <figure class="product-media">
                                         <span class="product-label label-new">New</span>
-                                        <a href="product.html">
+                                        <a asp-action="Details" asp-controller="Urunler" asp-route-id="@item.Id">
                                             <img src="@item.ThumbnailImage" alt="Product image" class="product-image">
                                         </a>
-
-                                        <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                        </div><!-- End .product-action-vertical -->
-
                                         <div class="product-action">
-                                            <a href="#" class="btn-product btn-cart"><span>Sepete Ekle</span></a>
+                                            <a href="javascript:void(0);" onclick="AddToCart(@item.Id)" class="btn-product btn-cart" title="Sepete Ekle"><span>Sepete Ekle</span></a>
                                         </div><!-- End .product-action -->
                                     </figure><!-- End .product-media -->
 
                                     <div class="product-body">
                                         <div class="product-cat">
-                                            <a href="#">Women</a>
+                                            <a asp-action="Index" asp-controller="Urunler" asp-route-id="@item.CategoryId">@item.Category.CategoryName</a>
                                         </div><!-- End .product-cat -->
                                         <h3 class="product-title">
-                                            <a href="product.html">
+                                            <a asp-action="Details" asp-controller="Urunler" asp-route-id="@item.Id">
                                                 @if (item.Name.Count() > 50)
                                                 {
                                                     @item.Name.Substring(0,item.Name.Substring(0,50).LastIndexOf(" ")).ToString()

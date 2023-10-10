@@ -61,11 +61,11 @@ namespace AspNetCoreMvc_ETicaret_DataAccess.Repositories
                 query = query.Include(table);
             }
 
-            return await query.FirstOrDefaultAsync();
+            return await query.AsNoTracking().FirstOrDefaultAsync();
         }
         public T GetNotAsync(Expression<Func<T, bool>> predicate)
         {
-            return _dbSet.AsNoTracking().FirstOrDefault(predicate);
+            return _dbSet.AsNoTracking().AsNoTracking().FirstOrDefault(predicate);
         }
         public async Task<IEnumerable<T>> GetAll(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderby = null, params Expression<Func<T, object>>[] includes)
         {

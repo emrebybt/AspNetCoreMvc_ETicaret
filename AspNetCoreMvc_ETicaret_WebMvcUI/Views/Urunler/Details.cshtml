@@ -6,6 +6,7 @@
 <br />
 <br />
 <br />
+
 <main class="main">
     <div class="page-content">
         <div class="container">
@@ -15,7 +16,7 @@
                         <div class="product-gallery">
                             <figure class="product-main-image">
                                 <span class="product-label label-top">Top</span>
-                                <img id="product-zoom" src="@Model.ThumbnailImage" data-zoom-image="assets/images/products/single/sidebar-gallery/1-big.jpg" alt="product image">
+                                <img id="product-zoom" src="@Model.ContentImage">
 
                                 <a href="#" id="btn-product-gallery" class="btn-product-gallery">
                                     <i class="icon-arrows"></i>
@@ -23,20 +24,20 @@
                             </figure><!-- End .product-main-image -->
 
                             <div id="product-zoom-gallery" class="product-image-gallery">
-                                <a class="product-gallery-item active" href="#" data-image="~/proje/assets/images/products/single/sidebar-gallery/1.jpg" data-zoom-image="~/proje/assets/images/products/single/sidebar-gallery/1-big.jpg">
-                                    <img src="@Model.ThumbnailImage" alt="product side">
+                                <a class="product-gallery-item active" href="#">
+                                    <img src="@Model.ContentImage" alt="product side">
                                 </a>
 
-                                <a class="product-gallery-item" href="#" data-image="~/proje/assets/images/products/single/sidebar-gallery/2.jpg" data-zoom-image="~/proje/assets/images/products/single/sidebar-gallery/2-big.jpg">
-                                    <img src="@Model.ThumbnailImage" alt="product cross">
+                                <a class="product-gallery-item" href="#">
+                                    <img src="@Model.ContentImage2" alt="product cross">
                                 </a>
 
-                                <a class="product-gallery-item"  data-image="~/proje/assets/images/products/single/sidebar-gallery/3.jpg" data-zoom-image="~/proje/assets/images/products/single/sidebar-gallery/3-big.jpg">
-                                    <img src="@Model.ThumbnailImage" alt="product with model">
+                                <a class="product-gallery-item" href="#">
+                                    <img src="@Model.ContentImage3" alt="product with model">
                                 </a>
 
-                                <a class="product-gallery-item" href="#" data-image="~/proje/assets/images/products/single/sidebar-gallery/4.jpg" data-zoom-image="~/proje/assets/images/products/single/sidebar-gallery/4-big.jpg">
-                                    <img src="@Model.ThumbnailImage" alt="product back">
+                                <a class="product-gallery-item" href="#">
+                                    <img src="@Model.ContentImage4" alt="product back">
                                 </a>
                             </div><!-- End .product-image-gallery -->
                         </div><!-- End .product-gallery -->
@@ -59,7 +60,19 @@
                             </div><!-- End .product-price -->
 
                             <div class="product-content">
-                                <p>@Model.Description</p>
+                                <p>
+                                    
+                                    @if (@Model.Description.Count() > 400)
+                                    {
+                                        @Model.Description.Substring(0,@Model.Description.Substring(0,400).LastIndexOf(" ")).ToString()
+
+                                        <span>...</span>
+                                    }
+                                    else
+                                    {
+                                        @Model.Description
+                                    }
+                                </p>
                                 <a href="#product-info-link" onclick="handleClick()">Devamını Oku ...</a>
                             </div><!-- End .product-content -->
                             <div class="details-filter-row details-row-size">
@@ -101,10 +114,7 @@
                         <a class="nav-link" id="product-info-link" data-toggle="tab" href="#product-info-tab" role="tab" aria-controls="product-info-tab" aria-selected="false">Additional information</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="product-shipping-link" data-toggle="tab" href="#product-shipping-tab" role="tab" aria-controls="product-shipping-tab" aria-selected="false">Shipping & Returns</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="product-review-link" data-toggle="tab" href="#product-review-tab" role="tab" aria-controls="product-review-tab" aria-selected="false">Reviews (2)</a>
+                        <a class="nav-link" id="product-review-link" data-toggle="tab" href="#product-review-tab" role="tab" aria-controls="product-review-tab" aria-selected="false">Yorumlar (2)</a>
                     </li>
                 </ul>
                 <div class="tab-content">
@@ -126,31 +136,8 @@
                     </div><!-- .End .tab-pane -->
                     <div class="tab-pane fade" id="product-info-tab" role="tabpanel" aria-labelledby="product-info-link">
                         <div class="product-desc-content">
-                            <h3>Information</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. </p>
-
-                            <h3>Fabric & care</h3>
-                            <ul>
-                                <li>Faux suede fabric</li>
-                                <li>Gold tone metal hoop handles.</li>
-                                <li>RI branding</li>
-                                <li>Snake print trim interior </li>
-                                <li>Adjustable cross body strap</li>
-                                <li> Height: 31cm; Width: 32cm; Depth: 12cm; Handle Drop: 61cm</li>
-                            </ul>
-
-                            <h3>Size</h3>
-                            <p>one size</p>
-                        </div><!-- End .product-desc-content -->
-                    </div><!-- .End .tab-pane -->
-
-                    <div class="tab-pane fade" id="product-shipping-tab" role="tabpanel" aria-labelledby="product-shipping-link">
-                        <div class="product-desc-content">
-                            <h3>Delivery & returns</h3>
-                            <p>
-                                We deliver to over 100 countries around the world. For full details of the delivery options we offer, please view our <a href="#">Delivery information</a><br>
-                                We hope you’ll love every purchase, but if you ever need to return an item you can do so within a month of receipt. For full details of how to make a return, please view our <a href="#">Returns information</a>
-                            </p>
+                            <h3>Ürün Açıklaması</h3>
+                            <p>@Model.Description </p>
                         </div><!-- End .product-desc-content -->
                     </div><!-- .End .tab-pane -->
                     <div class="tab-pane fade" id="product-review-tab" role="tabpanel" aria-labelledby="product-review-link">
@@ -263,20 +250,29 @@
 
 @section Scripts {
 
-
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     <script>
-        function handleClick() {
-            var productInfoTab = document.getElementById("product-info-tab");
-            if (productInfoTab.style.display === "none" || productInfoTab.style.display === "") {
-                productInfoTab.style.display = "block";
-            } else {
-                productInfoTab.style.display = "none";
-            }
-        }
+        $(document).ready(function () {
+            // Başlangıçta ana resmi ayarla
+            $("#product-zoom").attr("src", $("#product-zoom-gallery .active img").attr("src"));
 
+            // Thumbnail tıklamalarını ele al
+            $("#product-zoom-gallery a").click(function (e) {
+                e.preventDefault();
+
+                // Tıklanan minyatürün 'data-image' özelliğine dayanarak ana resmi güncelle
+                $("#product-zoom").attr("src", $(this).find('img').attr("src"));
+
+                // Tüm minyatürlerden 'active' sınıfını kaldır ve tıklananına ekleyin
+                $("#product-zoom-gallery a").removeClass("active");
+                $(this).addClass("active");
+            });
+        });
 
     </script>
+
+
 
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");

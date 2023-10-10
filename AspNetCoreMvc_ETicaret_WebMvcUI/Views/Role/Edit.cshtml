@@ -1,0 +1,93 @@
+﻿@model UsersInOrOutViewModel
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <form asp-action="Edit" asp-controller="Role" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" name="RoleId" value="@Model.Role.Id" />
+            <input type="hidden" name="RoleName" value="@Model.Role.Name" />
+            <h5 class="bg-primary text-white">@Model.Role.Name rolünde bulunan kullanıcılar</h5>
+            <div class="row">
+            </div>
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Ürün Listesi</h4>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Username</th>
+                                        <th>Email</th>
+                                        <th>İşlem</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model.UsersInRole.Count() > 0)
+                                    {
+                                        @foreach (var user in Model.UsersInRole)
+                                        {
+                                            <tr>
+                                                <td>@user.FirstName</td>
+                                                <td>@user.Email</td>
+                                                <td>
+                                                    <input type="checkbox" name="UserIdsToDelete" value="@user.Id">
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td colspan="3" class="text-center"><h4>Role ait kullanıcı bulunmamaktadır.</h4></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br /><hr /><br />
+            <h5 class="bg-primary text-white">@Model.Role.Name rolünde olmayan kullanıcılar</h5>
+            <table class="table table-bordered table-striped ">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>İşlem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.UsersOutRole.Count() > 0)
+                    {
+                        @foreach (var user in Model.UsersOutRole)
+                        {
+                            <tr>
+                                <td>@user.FirstName</td>
+                                <td>@user.Email</td>
+                                <td>
+                                    <input type="checkbox" name="UserIdsToAdd" value="@user.Id">
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="2">Bütün kullanıcılar bu role atanmıştır.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="mt-2 text-center">
+                <input class="btn btn-primary" type="submit" value="Save Edit" />
+            </div>
+        </form>
+    </div>
+
+</div>

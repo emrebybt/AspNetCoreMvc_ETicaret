@@ -11,7 +11,7 @@ namespace AspNetCoreMvc_ETicaret_Entity.Services
 {
     public interface IProductService
     {
-        Task Add(ProductViewModel model);
+        Task<int> Add(ProductViewModel model);
         public void Update(ProductViewModel model);
         public void Delete(ProductViewModel model);
         Task<ProductViewModel> GetById(int id);

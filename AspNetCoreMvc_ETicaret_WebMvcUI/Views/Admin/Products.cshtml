@@ -31,7 +31,8 @@
                                             <td class="py-1">
                                                 <img src="@item.ThumbnailImage" alt="image" />
                                             </td>
-                                            <td><a href="#">
+                                            <td>
+                                                <a asp-action="Details" asp-controller="Urunler" asp-route-id="@item.Id" target="_blank">
                                                 @if (item.Name.Count() > 50)
                                                 {
                                                     @item.Name.Substring(0,item.Name.Substring(0,50).LastIndexOf(" ")).ToString()
@@ -48,8 +49,8 @@
                                             <td> @item.Category.CategoryName </td>
                                             <td> @item.Price.ToString("C") </td>
                                             <td> @item.Stock </td>
-                                            <td> <a href="#">@(item.Status ? "Offline" : "Online")</a>  </td>
-                                            <td> <a class="btn btn-outline-primary" asp-action="ProductDetails" asp-controller="Admin" asp-route-id="@item.Id"></a>  </td>
+                                            <td>  <a asp-action="ProductStatus" asp-controller="Admin" asp-route-id="@item.Id" class="btn btn-outline-@(item.IsDeleted ? "danger" : "success")">@(item.IsDeleted ? "Offline" : "Online")</a> </td>
+                                            <td> <a class="btn btn-outline-primary" asp-action="ProductDetails" asp-controller="Admin" asp-route-id="@item.Id">Düzenle</a>  </td>
                                         </tr>
                                     }
                                 </tbody>

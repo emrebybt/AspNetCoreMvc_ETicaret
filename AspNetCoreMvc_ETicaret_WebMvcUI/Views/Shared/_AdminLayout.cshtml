@@ -9,7 +9,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Corona Admin</title>
+    <title>Molla Admin</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="~/admin/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="~/admin/assets/vendors/css/vendor.bundle.base.css">
@@ -113,6 +113,14 @@
                     </a>
                 </li>
                 <li class="nav-item menu-items">
+                    <a class="nav-link" asp-action="Sales" asp-controller="Admin">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-cart-outline"></i>
+                        </span>
+                        <span class="menu-title">Satışlar</span>
+                    </a>
+                </li>
+                <li class="nav-item menu-items">
                     <a class="nav-link" href="/Admin/Users">
                         <span class="menu-icon">
                             <i class="mdi mdi-account-multiple"></i>
@@ -129,22 +137,20 @@
                     </a>
                 </li>
                 <li class="nav-item menu-items">
-                    <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+                    <a class="nav-link" asp-action="Index" asp-controller="Role">
                         <span class="menu-icon">
-                            <i class="mdi mdi-security"></i>
+                            <i class="mdi mdi-comment-multiple-outline"></i>
                         </span>
-                        <span class="menu-title">User Pages</span>
-                        <i class="menu-arrow"></i>
+                        <span class="menu-title">Roller</span>
                     </a>
-                    <div class="collapse" id="auth">
-                        <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Blank Page </a></li>
-                            <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
-                            <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
-                            <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-                            <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
-                        </ul>
-                    </div>
+                </li>
+                <li class="nav-item menu-items">
+                    <a class="nav-link" asp-action="Index" asp-controller="AnaSayfa">
+                        <span class="menu-icon">
+                            <i class="mdi mdi-keyboard-backspace"></i>
+                        </span>
+                        <span class="menu-title">Siteye Dön</span>
+                    </a>
                 </li>
             </ul>
         </nav>
@@ -159,13 +165,6 @@
                     <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                         <span class="mdi mdi-menu"></span>
                     </button>
-                    <ul class="navbar-nav w-100">
-                        <li class="nav-item w-100">
-                            <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-                                <input type="text" class="form-control" placeholder="Search products">
-                            </form>
-                        </li>
-                    </ul>
                     <ul class="navbar-nav navbar-nav-right">
                         <li class="nav-item dropdown d-none d-lg-block">
                             <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" href="#">+ Oluştur</a>
@@ -183,16 +182,6 @@
                                     </div>
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item preview-item">
-                                    <div class="preview-thumbnail">
-                                        <div class="preview-icon bg-dark rounded-circle">
-                                            <i class="mdi mdi-table-row-plus-after text-info"></i>
-                                        </div>
-                                    </div>
-                                    <div class="preview-item-content">
-                                        <p class="preview-subject ellipsis mb-1">Yeni Kategori</p>
-                                    </div>
-                                </a>
                             </div>
                         </li>
                         <li class="nav-item nav-settings d-none d-lg-block">
@@ -341,6 +330,7 @@
     <script src="~/admin/assets/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
+    @await RenderSectionAsync("Scripts", required: false)   
     <script src="~/admin/assets/vendors/chart.js/Chart.min.js"></script>
     <script src="~/admin/assets/vendors/progressbar.js/progressbar.min.js"></script>
     <script src="~/admin/assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>

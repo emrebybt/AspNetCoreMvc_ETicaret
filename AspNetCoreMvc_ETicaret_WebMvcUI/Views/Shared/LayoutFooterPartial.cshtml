@@ -23,11 +23,11 @@
                         <h4 class="widget-title text-white">Kurumsal</h4><!-- End .widget-title -->
 
                         <ul class="widget-list text-white">
-                            <li><a href="about.html">Siteİsmi Hakkında</a></li>
+                            <li><a asp-action="About" asp-controller="Anasayfa">Molla Hakkında</a></li>
                             <li><a href="#">Hizmetlerimiz</a></li>
                             <li><a href="#">Kişisel Verilerin Korunması</a></li>
-                            <li><a href="faq.html">S.S.S</a></li>
-                            <li><a href="contact.html">İletişim</a></li>
+                            <li><a asp-action="SSS" asp-controller="Anasayfa">S.S.S</a></li>
+                            <li><a asp-action="Contact" asp-controller="Anasayfa">İletişim</a></li>
                         </ul><!-- End .widget-list -->
                     </div><!-- End .widget -->
                 </div><!-- End .col-sm-6 col-lg-3 -->
@@ -37,12 +37,12 @@
                         <h4 class="widget-title text-white">Müşteri Hizmetleri</h4><!-- End .widget-title -->
 
                         <ul class="widget-list text-white">
-                            <li><a href="#">Ödeme Yöntemleri</a></li>
-                            <li><a href="#">Satın alınan ürünle ilgili talepler</a></li>
-                            <li><a href="#">İptal ve iade</a></li>
-                            <li><a href="#">Teslimat ve kargo</a></li>
-                            <li><a href="#">Güvenli Alışveriş Kılavuzu</a></li>
-                            <li><a href="#">Bilgi Güvenliği Politikası</a></li>
+                            <li><a asp-action="SSS" asp-controller="Anasayfa">Ödeme Yöntemleri</a></li>
+                            <li><a asp-action="SSS" asp-controller="Anasayfa">Satın alınan ürünle ilgili talepler</a></li>
+                            <li><a asp-action="SSS" asp-controller="Anasayfa">İptal ve iade</a></li>
+                            <li><a asp-action="SSS" asp-controller="Anasayfa">Teslimat ve kargo</a></li>
+                            <li><a asp-action="SSS" asp-controller="Anasayfa">Güvenli Alışveriş Kılavuzu</a></li>
+                            <li><a asp-action="SSS" asp-controller="Anasayfa">Bilgi Güvenliği Politikası</a></li>
                         </ul><!-- End .widget-list -->
                     </div><!-- End .widget -->
                 </div><!-- End .col-sm-6 col-lg-3 -->
@@ -52,11 +52,9 @@
                         <h4 class="widget-title text-white">Hesabım</h4><!-- End .widget-title -->
 
                         <ul class="widget-list text-white">
-                            <li><a href="#">Giriş Yap</a></li>
-                            <li><a href="cart.html">Sepeti Görüntüle</a></li>
-                            <li><a href="#">Favoriler</a></li>
-                            <li><a href="#">Siparişlerim</a></li>
-                            <li><a href="#">Yardım</a></li>
+                            <li><a asp-action="Login" asp-controller="Account">Giriş Yap</a></li>
+                            <li><a asp-action="Index" asp-controller="Cart">Sepeti Görüntüle</a></li>
+                            <li><a asp-action="SSS" asp-controller="Anasayfa">Yardım</a></li>
                         </ul><!-- End .widget-list -->
                     </div><!-- End .widget -->
                 </div><!-- End .col-sm-6 col-lg-3 -->

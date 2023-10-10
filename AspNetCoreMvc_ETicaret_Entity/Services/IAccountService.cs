@@ -16,5 +16,10 @@ namespace AspNetCoreMvc_ETicaret_Entity.Services
         Task <UserViewModel> FindByIdAsync(int id);
         void UpdateCartPrice(int cartId);
         Task<List<UserViewModel>> GetAll();
+        Task<List<RoleViewModel>> GetAllRoles();
+        Task<string> CreateRoleAsync(RoleViewModel role);
+        Task<UsersInOrOutViewModel> GetAllUsersWithRole(string id);
+        Task<RoleViewModel> FindRoleByIdAsync(string id);
+        Task<string> EditRoleListAsync(EditRoleViewModel model);
     }
 }

@@ -17,9 +17,13 @@ namespace AspNetCoreMvc_ETicaret_WebMvcUI.Controllers
             _productSpecsService = productSpecsService;
         }
         
-        public async Task<IActionResult> Index(int? id, string[]? value)
+        public async Task<IActionResult> Index(int? id, string[]? value , string search)
         {
-            var products = await _productService.GetListAllByFilter(x => x.IsDeleted == false && x.CategoryId == id);
+            var products = await _productService.GetListAllByFilter(x => x.IsDeleted == false, x => x.Category);
+            if (id != null)
+            {
+                products = await _productService.GetListAllByFilter(x => x.IsDeleted == false && x.CategoryId == id, x => x.Category);
+            }
             options.Expires = DateTime.Now.AddDays(1);
             if (value.Count() > 0)
             {
@@ -27,16 +31,19 @@ namespace AspNetCoreMvc_ETicaret_WebMvcUI.Controllers
                 ViewBag.specs = await _filterSpecService.GetAll(x => x.CategoryId == id);
                 return View(values);
             }
+            if (search != null)
+            {
+                products = products.Where(x => x.Name.ToLower().Contains(search.ToLower()));
+            }
             ViewBag.specs = await _filterSpecService.GetAll(x => x.CategoryId == id);
             Response.Cookies.Append("category", id.ToString(), options);
             return View(products);
         }
         public async Task<IActionResult> Details(int id)
         {
+
             var model = await _productService.GetByFilter(x => x.Id == id,x=>x.Category);
             ViewBag.specs = await _productSpecsService.GetListAllByFilter(x => x.ProductId == id);
-            options.Expires = DateTime.Now.AddDays(1);
-            Response.Cookies.Append("category", model.CategoryId.ToString(), options);
             return View(model);
         }
     }

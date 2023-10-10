@@ -12,6 +12,8 @@ namespace AspNetCoreMvc_ETicaret_Entity.Services
     public interface ISaleService
     {
         void CreateSale(List<CartLineViewModel> cartline, CartViewModel cart);
-        Task<List<SaleViewModel>> GetAllSale(Expression<Func<Sale, bool>> filter, Func<IQueryable<Sale>, IOrderedQueryable<Sale>> orderby = null, params Expression<Func<Sale, object>>[] includes);
+        Task<List<SaleViewModel>> GetAllSale(Expression<Func<Sale, bool>> filter = null, Func<IQueryable<Sale>, IOrderedQueryable<Sale>> orderby = null, params Expression<Func<Sale, object>>[] includes);
+        Task<List<SaleViewModel>> GetAll();
+        Task<List<SaleViewModel>> GetAllLastFive();
     }
 }

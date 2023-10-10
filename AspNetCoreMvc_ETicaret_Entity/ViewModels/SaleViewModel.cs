@@ -11,6 +11,7 @@ namespace AspNetCoreMvc_ETicaret_Entity.ViewModels
     {
         public int Id { get; set; }
         public int UserId { get; set; }
+        public string FullName { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime CreatedDate { get; set; }
         public int TotalQuantity { get; set; }

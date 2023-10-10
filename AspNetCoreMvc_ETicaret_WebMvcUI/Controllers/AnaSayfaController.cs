@@ -8,5 +8,17 @@ namespace AspNetCoreMvc_ETicaret_WebMvcUI.Controllers
         {
             return View();
         }
+        public IActionResult About()
+        {
+            return View();
+        }
+        public IActionResult SSS()
+        {
+            return View();
+        }
+        public IActionResult Contact()
+        {
+            return View();
+        }
     }
 }

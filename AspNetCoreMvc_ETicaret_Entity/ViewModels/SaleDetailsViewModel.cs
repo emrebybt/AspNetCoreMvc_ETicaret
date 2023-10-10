@@ -13,6 +13,7 @@ namespace AspNetCoreMvc_ETicaret_Entity.ViewModels
         public int ProductId { get; set; }
         public int Quantity { get; set; }
         public decimal Price { get; set; }
+        public DateTime CreatedDate { get; set; }
         public bool IsDeleted { get; set; }
         public int SaleId { get; set; }
 

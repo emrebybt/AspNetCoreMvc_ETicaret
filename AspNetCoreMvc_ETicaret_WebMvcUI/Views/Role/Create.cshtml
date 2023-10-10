@@ -1,0 +1,40 @@
+﻿@model RoleViewModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Yeni Rol Oluştur</h4>
+                        <form class="forms-sample" asp-action="Create" asp-controller="Role" method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="Name">Rol Adı</label>
+                                <input type="text" asp-for=Name class="form-control" placeholder="Rol Adı">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Description">Açıklama</label>
+                                <input type="text" asp-for=Description class="form-control" placeholder="Açıklama">
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary mr-2">Kaydet</button>
+                            <a asp-action="Index" asp-controller="Role" class="btn btn-dark">İptal</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
