@@ -17,7 +17,7 @@ namespace AspNetCoreMvc_ETicaret_WebMvcUI.Controllers
             _productSpecsService = productSpecsService;
         }
         
-        public async Task<IActionResult> Index(int? id, string[]? value , string search)
+        public async Task<IActionResult> Index(int? id, string[]? value , string search, string brand)
         {
             var products = await _productService.GetListAllByFilter(x => x.IsDeleted == false, x => x.Category);
             if (id != null)
@@ -34,6 +34,10 @@ namespace AspNetCoreMvc_ETicaret_WebMvcUI.Controllers
             if (search != null)
             {
                 products = products.Where(x => x.Name.ToLower().Contains(search.ToLower()));
+            }
+            if (brand != null)
+            {
+                products = products.Where(x => x.Brand.Contains(brand));
             }
             ViewBag.specs = await _filterSpecService.GetAll(x => x.CategoryId == id);
             Response.Cookies.Append("category", id.ToString(), options);

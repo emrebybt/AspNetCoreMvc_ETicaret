@@ -1,6 +1,6 @@
 ﻿<header class="header header-intro-clearance header-4">
 
-
+    
     <div class="header-middle">
         <div class="container">
             <div class="header-left">
@@ -116,22 +116,19 @@
                 <nav class="main-nav">
                     <ul class="menu sf-arrows">
                         <li class="megamenu-container mx-3">
-                            <a href="index.html">Ana Sayfa</a>
+                            <a asp-action="Index" asp-controller="AnaSayfa">Ana Sayfa</a>
                         </li>
                         <li class="mx-3">
-                            <a href="category.html">Shop</a>
+                            <a asp-action="Index" asp-controller="Urunler" asp-route-id="6" >Laptoplar</a>
                         </li>
                         <li class="mx-3">
-                            <a href="product.html">Product</a>
-                        </li>
-                        <li class="mx-3">
-                            <a href="#">Pages</a>
+                            <a asp-action="Index" asp-controller="Urunler" asp-route-id="3">Televizyonlar</a>
                         </li>
                         <li>
-                            <a href="blog.html">Hakkımızda</a>
+                            <a asp-action="About" asp-controller="AnaSayfa">Hakkımızda</a>
                         </li>
                         <li class="mx-3">
-                            <a href="elements-list.html">İletişim</a>
+                            <a asp-controller="AnaSayfa" asp-action="Contact">İletişim</a>
                         </li>
                     </ul><!-- End .menu -->
                 </nav><!-- End .main-nav -->

@@ -1,7 +1,7 @@
 ﻿function AddToCart(id) {
     $.ajax({
         type: "POST",
-        url: "Cart/AddCart",
+        url: "/Cart/AddCart",
         data: { id: id, quantity: 1 },
         success: function (response) {
             Swal.fire({

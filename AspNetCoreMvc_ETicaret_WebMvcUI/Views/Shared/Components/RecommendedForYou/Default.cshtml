@@ -16,7 +16,7 @@
                     </div><!-- End .product-action -->
 
                     <div class="product-action">
-                        <a href="#" class="btn-product btn-cart" title="Add to cart"><span>Sepete Ekle</span></a>
+                            <a href="javascript:void(0);" onclick="AddToCart(@item.Id)" class="btn-product btn-cart" title="Sepete Ekle"><span>Sepete Ekle</span></a>
                     </div><!-- End .product-action -->
                 </figure><!-- End .product-media -->
 
@@ -24,7 +24,18 @@
                     <div class="product-cat">
                             <a asp-action="Index" asp-controller="Urunler" asp-route-id="@item.CategoryId">@item.Category.CategoryName</a>
                     </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a asp-action="Details" asp-controller="Urunler" asp-route-id="@item.Id">@item.Name</a></h3><!-- End .product-title -->
+                        <h3 class="product-title"><a asp-action="Details" asp-controller="Urunler" asp-route-id="@item.Id">
+                                @if (item.Name.Count() > 40)
+                                {
+                                    @item.Name.Substring(0,item.Name.Substring(0,40).LastIndexOf(" ")).ToString()
+
+                                    <span>...</span>
+                                }
+                                else
+                                {
+                                    @item.Name
+                                }
+                            </a></h3><!-- End .product-title -->
                     <div class="product-price">
                         <span class="new-price">@item.Price.ToString("C")</span>
                     </div><!-- End .product-price -->
