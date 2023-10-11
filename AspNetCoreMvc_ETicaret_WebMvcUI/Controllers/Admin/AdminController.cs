@@ -16,7 +16,8 @@ namespace AspNetCoreMvc_ETicaret_WebMvcUI.Controllers.Admin
         private readonly IProductSpecsService _productSpecsService;
         private readonly ISaleService _saleService;
         private readonly ISaleDetailsService _saleDetailsService;
-        public AdminController(IProductService productService, ICategoryService categoryService, IAccountService accountService, IProductSpecsService productSpecsService, ISaleService saleService, ISaleDetailsService saleDetailsService)
+        private readonly ICommentService _commentService;
+        public AdminController(IProductService productService, ICategoryService categoryService, IAccountService accountService, IProductSpecsService productSpecsService, ISaleService saleService, ISaleDetailsService saleDetailsService, ICommentService commentService)
         {
             _productService = productService;
             _categoryService = categoryService;
@@ -24,6 +25,7 @@ namespace AspNetCoreMvc_ETicaret_WebMvcUI.Controllers.Admin
             _productSpecsService = productSpecsService;
             _saleService = saleService;
             _saleDetailsService = saleDetailsService;
+            _commentService = commentService;
         }
 
         public async Task<IActionResult> Index()
@@ -184,6 +186,25 @@ namespace AspNetCoreMvc_ETicaret_WebMvcUI.Controllers.Admin
                 }
             }
             return RedirectToAction("Products");
+        }
+        public async Task<IActionResult> Comments()
+        {
+            var comments = await _commentService.GetAllByFilter(null,null,x=>x.Product);
+            return View(comments);
+        }
+        public async Task<IActionResult> CommentDelete(int id)
+        {
+            var comment = await _commentService.Get(id);
+            if (comment.IsDeleted == true)
+            {
+                comment.IsDeleted = false;
+            }
+            else
+            {
+                comment.IsDeleted= true;
+            }
+            _commentService.Update(comment);
+            return RedirectToAction("Comments");
         }
     }
 }

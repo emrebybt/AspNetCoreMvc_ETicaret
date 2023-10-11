@@ -11,7 +11,9 @@ namespace AspNetCoreMvc_ETicaret_Entity.Services
 {
     public interface ICommentService
     {
-        Task<List<CommentViewModel>> GetAllByFilter(Expression<Func<Comments, bool>> filter, Func<IQueryable<Comments>, IOrderedQueryable<Comments>> orderby = null, params Expression<Func<Comments, object>>[] includes);
+        Task<List<CommentViewModel>> GetAllByFilter(Expression<Func<Comments, bool>> filter = null, Func<IQueryable<Comments>, IOrderedQueryable<Comments>> orderby = null, params Expression<Func<Comments, object>>[] includes);
         void Add(CommentViewModel model);
+        Task<CommentViewModel> Get(int id);
+        void Update(CommentViewModel model);
     }
 }

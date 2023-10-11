@@ -28,10 +28,22 @@ namespace AspNetCoreMvc_ETicaret_Service.Services
             _uow.Commit();
         }
 
-        public async Task<List<CommentViewModel>> GetAllByFilter(Expression<Func<Comments, bool>> filter, Func<IQueryable<Comments>, IOrderedQueryable<Comments>> orderby = null, params Expression<Func<Comments, object>>[] includes)
+        public async Task<CommentViewModel> Get(int id)
+        {
+            var comment = await _uow.GetRepository<Comments>().Get(x=>x.Id==id);
+            return _mapper.Map<CommentViewModel>(comment);
+        }
+
+        public async Task<List<CommentViewModel>> GetAllByFilter(Expression<Func<Comments, bool>> filter = null, Func<IQueryable<Comments>, IOrderedQueryable<Comments>> orderby = null, params Expression<Func<Comments, object>>[] includes)
         {
             var list = await _uow.GetRepository<Comments>().GetAll(filter,orderby,includes);
             return _mapper.Map<List<CommentViewModel>>(list);
+        }
+
+        public void Update(CommentViewModel model)
+        {
+            _uow.GetRepository<Comments>().Update(_mapper.Map<Comments>(model));
+            _uow.Commit();
         }
     }
 }

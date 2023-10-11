@@ -1,8 +1,10 @@
-﻿@model List<CategoryViewModel>
+﻿@model List<CommentViewModel>
+
 @{
-    ViewData["Title"] = "Products";
+    ViewData["Title"] = "Comments";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
 
 <div class="main-panel">
     <div class="content-wrapper">
@@ -15,9 +17,11 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th> Kategori </th>
-                                        <th> Açıklama </th>
-                                        <th> Kategorideki Ürün Sayısı </th>
+                                        <th> Adı </th>
+                                        <th> Başlık </th>
+                                        <th> Yorum </th>
+                                        <th> Yapılan Ürün </th>
+                                        <th> Düzenle </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -25,21 +29,12 @@
                                     {
                                         <tr>
                                             <td>
-                                                <a asp-action="Index" asp-controller="Urunler" asp-route-id="@item.Id">@item.CategoryName</a>
+                                                <a href="#">@item.Name</a>
                                             </td>
-                                            <td>
-                                                @if (item.CategoryDescription.Count() > 50)
-                                                {
-                                                    @item.CategoryDescription.Substring(0,item.CategoryDescription.Substring(0,50).LastIndexOf(" ")).ToString()
-
-                                                    <span>...</span>
-                                                }
-                                                else
-                                                {
-                                                    @item.CategoryDescription
-                                                }
-                                            </td>
-                                            <td class="text-center"> @item.ProductCount </td>
+                                            <td> @item.Title </td>
+                                            <td > @item.Content </td>
+                                            <td> <a asp-action="Details" asp-controller="Urunler" asp-route-id="@item.ProductId" target="_blank"> @item.Product.Name</a> </td>
+                                            <td> <a asp-action="CommentDelete" asp-controller="Admin" asp-route-id="@item.Id" class="btn btn-outline-@(item.IsDeleted ? "danger" : "success")">@(item.IsDeleted ? "Offline" : "Online")</a>  </td>
                                         </tr>
                                     }
                                 </tbody>
@@ -60,4 +55,3 @@
     </footer>
     <!-- partial -->
 </div>
-
