@@ -135,8 +135,8 @@ namespace AspNetCoreMvc_ETicaret_Service.Services
         }
         public void Delete(int cartId)
         {
-            List<CartLine> deletedCartLine = new List<CartLine>();
-            deletedCartLine = _uow.GetRepository<CartLine>().GetAllNotAsync(x => x.CartId == cartId, null).ToList();
+            //List<CartLine> deletedCartLine = new List<CartLine>();
+            var deletedCartLine = _uow.GetRepository<CartLine>().GetAllNotAsync(x => x.CartId == cartId, null).ToList();
             foreach (var cart in deletedCartLine)
             {
                 CartLineViewModel cartline = new CartLineViewModel();

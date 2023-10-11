@@ -7,14 +7,12 @@ namespace AspNetCoreMvc_ETicaret_WebMvcUI.ViewComponents.Orders
     public class OrdersViewComponent : ViewComponent
     {
         private readonly ISaleService _saleService;
-        private readonly ISaleDetailsService _saleDetailsService;
         private readonly IAccountService _accountService;
 
-        public OrdersViewComponent(ISaleService saleService, IAccountService accountService, ISaleDetailsService saleDetailsService)
+        public OrdersViewComponent(ISaleService saleService, IAccountService accountService)
         {
             _saleService = saleService;
             _accountService = accountService;
-            _saleDetailsService = saleDetailsService;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()

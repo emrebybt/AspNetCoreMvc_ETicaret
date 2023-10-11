@@ -62,6 +62,7 @@ namespace AspNetCoreMvc_ETicaret_Service.Extensions
             services.AddScoped<ISaleService, SaleService>();
             services.AddScoped<ISaleDetailsService, SaleDetailsService>();
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<ICommentService, CommentService>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly());

@@ -13,24 +13,30 @@
                         <form class="forms-sample" asp-action="CreateProduct" asp-controller="Admin" method="post" enctype="multipart/form-data">
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <div class="form-group">
+                                
                                 <label asp-for="Name">Ürün Adı</label>
                                 <input type="text" asp-for=Name class="form-control" placeholder="Ürün Adı">
+                                <span asp-validation-for="Name" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="Description">Açıklama</label>
                                 <textarea type="text" class="form-control" asp-for="Description" rows="15" placeholder="Açıklama"></textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="Brand">Marka</label>
                                 <input type="text" class="form-control" asp-for=Brand placeholder="Marka">
+                                <span asp-validation-for="Brand" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="Price">Fiyat</label>
                                 <input type="text" class="form-control" asp-for=Price placeholder="Fiyat">
+                                <span asp-validation-for="Price" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="Stock">Stok Adeti</label>
                                 <input type="text" class="form-control" asp-for=Stock placeholder="Stok Adeti">
+                                <span asp-validation-for="Stock" class="text-danger"></span>
                             </div>
                             <div class="form-group">
                                 <label asp-for="CategoryId">Kategori</label>
@@ -41,30 +47,35 @@
                             <div class="form-group">
                                 <label>Kapak Resmi</label>
                                 <input asp-for="ThumbnailImage" class="form-control" type="file" name="formFile" />
+                                <span asp-validation-for="ThumbnailImage" class="text-danger"></span>
                                 <div class="input-group col-xs-12">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label>İçerik Resmi 1</label>
                                 <input asp-for="ContentImage" class="form-control" type="file" name="formFile2" />
+                                <span asp-validation-for="ContentImage" class="text-danger"></span>
                                 <div class="input-group col-xs-12">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label>İçerik Resmi 2</label>
                                 <input asp-for="ContentImage2" class="form-control" type="file" name="formFile3" />
+                                <span asp-validation-for="ContentImage2" class="text-danger"></span>
                                 <div class="input-group col-xs-12">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label>İçerik Resmi 3</label>
                                 <input asp-for="ContentImage3" class="form-control" type="file" name="formFile4" />
+                                <span asp-validation-for="ContentImage3" class="text-danger"></span>
                                 <div class="input-group col-xs-12">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label>İçerik Resmi 4</label>
                                 <input asp-for="ContentImage4" class="form-control" type="file" name="formFile5" />
+                                <span asp-validation-for="ContentImage4" class="text-danger"></span>
                                 <div class="input-group col-xs-12">
                                 </div>
                             </div>

@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<SaleDetailsViewModel>
+@{
     ViewData["Title"] = "UserDashboard";
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
@@ -39,8 +40,53 @@
 
                     <div class="col-md-8 col-lg-9">
                         <div class="tab-content">
+                            <table class="table table-cart table-mobile">
+                                <a asp-action="UserDashboard" asp-controller="Account"><i class="fa-solid fa-arrow-left-long fa-2xl"></i> Geri Dön</a>
+                                <thead>
+                                    <tr class="text-center">
+                                        <th>Ürün Adı</th>
+                                        <th>Fiyat</th>
+                                        <th>Adet</th>
+                                        <th width="90px">Toplam Fiyat</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
 
-                            <vc:orders></vc:orders>
+                                <tbody>
+
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="product-col" width="400px">
+                                                <div class="product">
+                                                    <figure class="product-media">
+                                                        <a asp-action="Details" asp-controller="Urunler" asp-route-id="@item.ProductId">
+                                                            <img src="@item.Product.ThumbnailImage" alt="Product image">
+                                                        </a>
+                                                    </figure>
+
+                                                    <h3 class="product-title">
+                                                        <a asp-action="Details" asp-controller="Urunler" asp-route-id="@item.ProductId">@item.Product.Name</a>
+                                                    </h3><!-- End .product-title -->
+                                                </div><!-- End .product -->
+                                            </td>
+                                            <td class="price-col">@item.Product.Price.ToString("C")</td>
+
+                                            <td class="quantity-col text-center">
+                                                <div class="cart-product-quantity d-inline">
+                                                    <p class="d-inline"><strong>@item.Quantity</strong></p>
+                                                </div><!-- End .cart-product-quantity -->
+
+                                            </td>
+                                            <td class="total-col">@((item.Quantity * item.Product.Price).ToString("C"))</td>
+                                        </tr>
+                                    }
+
+
+                                </tbody>
+                            </table><!-- End .table table-wishlist -->
+
+
                             <div class="tab-pane fade" id="tab-address" role="tabpanel" aria-labelledby="tab-address-link">
 
                                 <div class="row">

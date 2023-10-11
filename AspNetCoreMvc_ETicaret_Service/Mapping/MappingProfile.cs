@@ -23,6 +23,7 @@ namespace AspNetCoreMvc_ETicaret_Service.Mapping
             CreateMap<Sale,SaleViewModel>().ReverseMap();
             CreateMap<Categories,CategoryViewModel>().ReverseMap();
             CreateMap<AppRole,RoleViewModel>().ReverseMap();
+            CreateMap<Comments,CommentViewModel>().ReverseMap();
             CreateMap<SaleDetails,SaleDetailsViewModel>().ReverseMap();
         }
     }

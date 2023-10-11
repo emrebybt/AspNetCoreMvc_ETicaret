@@ -22,7 +22,7 @@
                                     Toplam Tutar: @item.TotalPrice.ToString("C")
                                 </div><!-- End .product-price -->
                             </div><!-- End .product-body -->
-                            <a class="btn btn-primary btn-round float-right" href="#">Sipariş Detayı</a>
+                            <a class="btn btn-primary btn-round float-right" asp-action="OrderDetails" asp-controller="Account" asp-route-id="@item.Id">Sipariş Detayı</a>
                         </div><!-- End .col-lg-6 -->
                     </div><!-- End .row -->
                 </div><!-- End .product -->

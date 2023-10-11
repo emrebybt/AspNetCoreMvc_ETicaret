@@ -61,7 +61,7 @@
 
                             <div class="product-content">
                                 <p>
-                                    
+
                                     @if (@Model.Description.Count() > 400)
                                     {
                                         @Model.Description.Substring(0,@Model.Description.Substring(0,400).LastIndexOf(" ")).ToString()
@@ -104,7 +104,9 @@
                     </div><!-- End .col-md-6 -->
                 </div><!-- End .row -->
             </div><!-- End .product-details-top -->
-
+            @{
+                List<CommentViewModel> comment = ViewBag.comments;
+            }
             <div class="product-details-tab">
                 <ul class="nav nav-pills justify-content-center" role="tablist">
                     <li class="nav-item">
@@ -114,7 +116,7 @@
                         <a class="nav-link" id="product-info-link" data-toggle="tab" href="#product-info-tab" role="tab" aria-controls="product-info-tab" aria-selected="false">Ürün Açıklaması</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="product-review-link" data-toggle="tab" href="#product-review-tab" role="tab" aria-controls="product-review-tab" aria-selected="false">Yorumlar (2)</a>
+                        <a class="nav-link" id="product-review-link" data-toggle="tab" href="#product-review-tab" role="tab" aria-controls="product-review-tab" aria-selected="false">Yorumlar (@comment.Count())</a>
                     </li>
                 </ul>
                 <div class="tab-content">
@@ -142,38 +144,52 @@
                     </div><!-- .End .tab-pane -->
                     <div class="tab-pane fade" id="product-review-tab" role="tabpanel" aria-labelledby="product-review-link">
                         <div class="reviews">
-                            <h3>Yorumlar (2)</h3>
-                            <div class="review">
-                                <div class="row no-gutters">
-                                    <div class="col-auto">
-                                        <h4><a href="#">Samanta J.</a></h4>
-                                        <div class="ratings-container">
-                                            <div class="ratings">
-                                                <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
-                                            </div><!-- End .ratings -->
-                                        </div><!-- End .rating-container -->
-                                        <span class="review-date">6 days ago</span>
-                                    </div><!-- End .col -->
-                                    <div class="col">
-                                        <h4>Good, perfect size</h4>
 
-                                        <div class="review-content">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus cum dolores assumenda asperiores facilis porro reprehenderit animi culpa atque blanditiis commodi perspiciatis doloremque, possimus, explicabo, autem fugit beatae quae voluptas!</p>
-                                        </div><!-- End .review-content -->
+                            @if (comment.Count() > 0)
+                            {
+                                <h3>Yorumlar (@comment.Count())</h3>
+                                @foreach (var item in ViewBag.comments)
+                                {
+                                    <div class="review">
+                                        <div class="row no-gutters">
+                                            <div class="col-auto">
+                                                <h4><a href="#">@item.Name</a></h4>
+                                                <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
+                                                    </div><!-- End .ratings -->
+                                                </div><!-- End .rating-container -->
+                                                <span class="review-date">@item.CreatedDate.ToString("dd-MMM-yyyy")</span>
+                                            </div><!-- End .col -->
+                                            <div class="col">
+                                                <h4>@item.Title</h4>
 
-                                        <div class="review-action">
-                                            <a href="#"><i class="icon-thumbs-up"></i>Helpful (2)</a>
-                                            <a href="#"><i class="icon-thumbs-down"></i>Unhelpful (0)</a>
-                                        </div><!-- End .review-action -->
-                                    </div><!-- End .col-auto -->
-                                </div><!-- End .row -->
-                            </div><!-- End .review -->
+                                                <div class="review-content">
+                                                    <p>@item.Content</p>
+                                                </div><!-- End .review-content -->
+
+                                            </div><!-- End .col-auto -->
+                                        </div><!-- End .row -->
+                                    </div>
+
+                                    <!-- End .review -->
+                                }
+                            }
+                            else
+                            {
+                                <div class="alert alert-primary container text-center mt-2" role="alert" style="height:70px; display: flex; align-items: center; justify-content: center; ">
+                                    Henüz Yorum Yok, İlk Yorumu Sen Yap!
+                                </div>
+                            }
+
+
                             @if (User.Identity.IsAuthenticated)
                             {
                                 <div class="comment-bottom">
-                                    <form asp-action="CreateComment" asp-controller="Product" asp-route-Id="@Model.Id" method="post">
-                                        <input class="form-control" type="text" name="Subject" placeholder="Başlık" required="">
-                                        <textarea class="form-control" name="Message" placeholder="Yorumunuz..." required=""></textarea>
+
+                                    <form asp-action="AddComment" asp-controller="Urunler" asp-route-id="@Model.Id" method="get">
+                                        <input class="form-control" type="text" name="title" placeholder="Başlık" required="">
+                                        <textarea class="form-control" name="content" placeholder="Yorumunuz..." required=""></textarea>
                                         <button type="submit" class="btn btn-primary submit">Kaydet</button>
                                     </form>
                                 </div>
@@ -216,8 +232,6 @@
         </div><!-- End .container -->
     </div><!-- End .page-content -->
 </main><!-- End .main -->
-
-
 @section Scripts {
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

@@ -22,5 +22,7 @@ namespace AspNetCoreMvc_ETicaret_DataAccess.Context
         DbSet<Sale> Sale { get; set; }
         DbSet<SaleDetails> SaleDetails { get; set; }
         DbSet<FilterSpecs> FilterSpecs { get; set; }
+        DbSet<Comments> Comments { get; set; }
+
     }
 }

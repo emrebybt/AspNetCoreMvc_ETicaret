@@ -13,6 +13,7 @@ namespace AspNetCoreMvc_ETicaret_Entity.ViewModels
         public int Id { get; set; }
         [Required(ErrorMessage = "Ürün adı boş geçilemez")]
         public string Name { get; set; }
+        [Required(ErrorMessage = "Ürün açıklaması boş geçilemez")]
         public string Description { get; set; }
         [Required(ErrorMessage = "Ürün fiyatı boş geçilemez")]
         public decimal Price { get; set; }

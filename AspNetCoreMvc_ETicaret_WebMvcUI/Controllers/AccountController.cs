@@ -12,11 +12,14 @@ namespace AspNetCoreMvc_ETicaret_WebMvcUI.Controllers
         private readonly IAccountService _service;
         private readonly ICartLineService _lineService;
         private readonly ICartService _cartService;
-        public AccountController(IAccountService service, ICartLineService lineService, ICartService cartService)
+        private readonly ISaleDetailsService _saleDetailsService;
+
+        public AccountController(IAccountService service, ICartLineService lineService, ICartService cartService, ISaleDetailsService saleDetailsService)
         {
             _service = service;
             _lineService = lineService;
             _cartService = cartService;
+            _saleDetailsService = saleDetailsService;
         }
 
         public IActionResult Index()
@@ -88,6 +91,12 @@ namespace AspNetCoreMvc_ETicaret_WebMvcUI.Controllers
             ViewBag.user = await _service.Find(User.Identity.Name);
             
             return View();
+        }
+        public async Task<IActionResult> OrderDetails(int id)
+        {
+            ViewBag.user = await _service.Find(User.Identity.Name);
+            var orders = await _saleDetailsService.GetAllSale(x => x.SaleId == id, x => x.OrderBy(x => x.CreatedDate), x => x.Product);
+            return View(orders);
         }
 
     }

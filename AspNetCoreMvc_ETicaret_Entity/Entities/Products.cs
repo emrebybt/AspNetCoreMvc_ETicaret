@@ -21,5 +21,6 @@ namespace AspNetCoreMvc_ETicaret_Entity.Entities
         public int CategoryId { get; set; }
         public Categories Category { get; set; }
         public List<ProductSpecs> ProductSpecs { get; set; }
+        public List<Comments> Comments { get; set; }
     }
 }
