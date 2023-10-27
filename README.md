@@ -29,7 +29,7 @@ Key features of our project include a layered architectural structure, secure id
 - JavaScript
 - Bootstrap
   
-## Kullanım / Using
+## Kullanım / Usage
 
 
 
