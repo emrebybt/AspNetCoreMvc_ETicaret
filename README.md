@@ -1,5 +1,5 @@
 
-# AspNetCoreMvc_ETicaret
+# Asp.Net Core 7 MVC E Ticaret Projesi
 
 TR
 
