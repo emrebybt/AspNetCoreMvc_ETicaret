@@ -5,7 +5,7 @@ TR
 
 ASP.NET Core 7 ve MVC mimarisiyle yapılmış e-ticaret projesi. Bu proje, modern bir alışveriş deneyimi sunmak üzere tasarlanmıştır.
 
-Projemizin temel özellikleri arasında katmanlı mimari yapısı, güvenli kimlik doğrulama, alışveriş sepeti yönetimi ve ürün adeti artışında Ajax kullanımı bulunmaktadır. Kullanıcı eğer giriş yapmamış ise sepeti sunucu hafızasında tutuluyor. Eğer kullanıcı giriş yaparsa sepet veri tabanında tutuluyor.
+Projenin temel özellikleri arasında katmanlı mimari yapısı, güvenli kimlik doğrulama, alışveriş sepeti yönetimi ve ürün adeti artışında Ajax kullanımı bulunmaktadır. Kullanıcı eğer giriş yapmamış ise sepeti sunucu hafızasında tutuluyor. Eğer kullanıcı giriş yaparsa sepet veri tabanında tutuluyor.
 
 EN
 
