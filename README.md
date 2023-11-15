@@ -33,7 +33,7 @@ Key features of our project include a layered architectural structure, secure id
 
 
 
-- TR -> Projeyi çalıştırmak için UI katmanındaki appsettings.json dosyasındaki ConnConnectionStrings altındaki "ConnStr" kısmını kendinize göre ayarlamanız gerekmektedir
+- TR -> Projeyi çalıştırmak için UI katmanındaki appsettings.json dosyasındaki ConnectionStrings altındaki "ConnStr" kısmını kendinize göre ayarlamanız gerekmektedir
 
 - EN -> To run the project, configure the "ConnStr" section under ConnConnectionStrings in the appsettings.json file in the UI layer according to your environment.
 
