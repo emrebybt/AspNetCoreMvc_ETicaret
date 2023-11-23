@@ -22,5 +22,6 @@ namespace AspNetCoreMvc_ETicaret_Entity.Repositories
         void FullDelete(int id);
         Task<IEnumerable<T>> GetAll(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderby = null, params Expression<Func<T, object>>[] includes);
         IEnumerable<T> GetAllNotAsync(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderby = null, params Expression<Func<T, object>>[] includes);
+        
     }
 }
